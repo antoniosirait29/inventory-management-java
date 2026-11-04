@@ -1,20 +1,17 @@
 package com.inventory.service;
-
 import com.inventory.model.Product;
-
 import java.util.ArrayList;
 import java.util.List;
-import com.inventory.model.Product;
 
 public class ProductService {
-    private ArrayList<String> products = new ArrayList<>();
+    private ArrayList<Product> products = new ArrayList<>();
 
-    public void addProduct(String Product){
+    public void addProduct(Product product){
 
     };
 
-    public String getAllProduct(String Product){
-        return Product;
+    public String getAllProduct(Product product){
+        return product;
     }
 
 
