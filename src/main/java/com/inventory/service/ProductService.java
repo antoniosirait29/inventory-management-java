@@ -7,12 +7,11 @@ public class ProductService {
     private ArrayList<Product> products = new ArrayList<>();
 
     public void addProduct(Product product){
-
+        products.add(product);
     };
 
-    public String getAllProduct(Product product){
-        return product;
+    public List<Product> getAllProducts(){
+        return products;
     }
-
 
 }
