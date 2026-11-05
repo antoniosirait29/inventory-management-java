@@ -16,8 +16,11 @@ public class Main {
         productService.addProduct(product2);
         productService.addProduct(product3);
 
-        System.out.println(productService.getAllProducts());
-        System.out.println("Sistem berhasil dijalankan");
+        //System.out.println(productService.getAllProducts());
+        System.out.println("Sistem berhasil dijalankan!");
+        for (Product product : productService.getAllProducts()) {
+            System.out.println(product);
+        }
 
 
 
