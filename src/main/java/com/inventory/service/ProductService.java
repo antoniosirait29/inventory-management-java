@@ -11,6 +11,7 @@ public class ProductService {
     };
 
     public List<Product> getAllProducts(){
+        
         return products;
     }
 

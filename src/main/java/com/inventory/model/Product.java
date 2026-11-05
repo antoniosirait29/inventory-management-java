@@ -15,24 +15,39 @@ public class Product {
         this.price = price;
         this.stock = stock;
     }
+    @Override
+    public String toString() {
+        return "Product{" +
+                "sku='" + sku + '\'' +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                '}';
+    }
 
     public String getSku() {
+
         return sku;
     }
 
     public String getName() {
+
         return name;
     }
 
     public String getCategory() {
+
         return category;
     }
 
     public BigDecimal getPrice() {
+
         return price;
     }
 
     public int getStock() {
+
         return stock;
     }
 }
