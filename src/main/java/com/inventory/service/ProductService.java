@@ -13,11 +13,9 @@ public class ProductService {
             String productName = productIndex.getName();
             if(productName.equals(product) == true){
                 throw new IllegalArgumentException("SKU already exists");
-            } else {
-                products.add(product);
             }
         }
-
+        products.add(product);
     };
 
     public List<Product> getAllProducts(){
