@@ -8,7 +8,7 @@ public class ProductService {
 
     public void addProduct(Product product){
 
-        for (int i = 0; i <= products.size(); i++){
+        for (int i = 0; i < products.size(); i++){
             Product productIndex = products.get(i);
             String existingProduct = productIndex.getSku();
             if(existingProduct.equals(product.getSku())){
