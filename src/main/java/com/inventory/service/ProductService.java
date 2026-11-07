@@ -10,13 +10,13 @@ public class ProductService {
 
         for (int i = 0; i <= products.size(); i++){
             Product productIndex = products.get(i);
-            String productName = productIndex.getName();
-            if(productName.equals(product) == true){
+            String existingProduct = productIndex.getSku();
+            if(existingProduct.equals(product.getSku())){
                 throw new IllegalArgumentException("SKU already exists");
             }
         }
         products.add(product);
-    };
+    }
 
     public List<Product> getAllProducts(){
 
