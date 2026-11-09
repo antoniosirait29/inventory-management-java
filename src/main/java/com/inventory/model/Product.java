@@ -18,8 +18,8 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "sku='" + sku + '\'' +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
+                ", sku='" + sku + '\'' +
                 ", category='" + category + '\'' +
                 ", price=" + price +
                 ", stock=" + stock +
