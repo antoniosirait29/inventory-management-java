@@ -7,11 +7,12 @@ public class ProductService {
     private final List<Product> products = new ArrayList<>();
 
     public void addProduct(Product product){
-        for (int i = 0; i < products.size(); i++){
-            Product productIndex = products.get(i);
-            String existingProduct = productIndex.getSku();
-            if(existingProduct.equals(product.getSku())){
-                throw new IllegalArgumentException("SKU already exists");
+
+        for (Product existingProduct : products){
+            String existingSKU = existingProduct.getSku();
+
+            if(existingSKU.equals(product.getSku())){
+                throw new IllegalArgumentException("SKU already exist!");
             }
         }
         products.add(product);

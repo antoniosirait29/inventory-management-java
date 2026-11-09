@@ -9,6 +9,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args){
+
+        System.out.println("Sistem berhasil dijalankan!");
+
         Product product1 = new Product("SAUS", "Saus Sambal", "Makanan",  new BigDecimal("5000.0"), 100);
         Product product2 = new Product("SAUS", "Saus Sambal", "Makanan",  new BigDecimal("5000.0"), 100);
         Product product3 = new Product("KCPASN", "Kecap Asin", "Makanan", new BigDecimal("6500.0"), 100);
@@ -27,17 +30,15 @@ public class Main {
                 productService.addProduct(product);
                 System.out.println("Produk " + product.getName() + " berhasil ditambahkan!");
             } catch (IllegalArgumentException e){
-                System.out.println("Produk " + product.getName() + " sudah ada di database!");
+                System.out.println("Gagal menambah produk " + product.getName() + " || Reason: " + e.getMessage());
             }
         }
 
+
         //System.out.println(productService.getAllProducts());
-        System.out.println("Sistem berhasil dijalankan!");
+
         for (Product product : productService.getAllProducts()) {
             System.out.println(product);
         }
-
-
-
     }
 }
