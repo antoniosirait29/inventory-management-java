@@ -32,7 +32,7 @@ public class Main {
                 String priceOnString = scanner.nextLine();
                 try {
                     price = new BigDecimal(priceOnString);
-                    if (price.compareTo(BigDecimal.ZERO) < 0){
+                    if (price.compareTo(BigDecimal.ZERO) <= 0){
                         System.out.println("Harga tidak boleh minus!");
                         continue;
                     }
