@@ -23,6 +23,10 @@ public class Main {
                 try {
                     System.out.print("Masukkan nama product: ");
                     name = scanner.nextLine();
+                    if (name.isBlank()){
+                        System.out.println("Nama tidak boleh kosong!");
+                        continue;
+                    }
                     break;
                 } catch (IllegalArgumentException e ){
                     System.out.println("Input invalid!");
@@ -31,21 +35,35 @@ public class Main {
             }
 
             String sku = "";
-            try {
-                System.out.print("Masukkan ID SKU: ");
-                sku = scanner.nextLine();
-            } catch (IllegalArgumentException e ){
-                System.out.println("Input invalid!");
-                continue;
+            while (true){
+                try {
+                    System.out.print("Masukkan ID SKU: ");
+                    sku = scanner.nextLine();
+                    if(sku.isBlank()){
+                        System.out.println("SKU tidak boleh kosong!");
+                        continue;
+                    }
+                    break;
+                } catch (IllegalArgumentException e ){
+                    System.out.println("Input invalid!");
+                    continue;
+                }
             }
 
             String category = "";
-            try {
-                System.out.print("Masukkan nama category: ");
-                category = scanner.nextLine();
-            } catch (IllegalArgumentException e ){
-                System.out.println("Input invalid!");
-                continue;
+            while (true){
+                try {
+                    System.out.print("Masukkan nama category: ");
+                    category = scanner.nextLine();
+                    if (category.isBlank()){
+                        System.out.println("Category tidak boleh kosong!");
+                        continue;
+                    }
+                    break;
+                } catch (IllegalArgumentException e ){
+                    System.out.println("Input invalid!");
+                    continue;
+                }
             }
 
             BigDecimal price;
@@ -55,12 +73,14 @@ public class Main {
                 try {
                     price = new BigDecimal(priceOnString);
                     if (price.compareTo(BigDecimal.ZERO) <= 0){
-                        System.out.println("Harga tidak boleh minus!");
+                        System.out.println("Harga harus lebih besar dari 0!");
                         continue;
                     }
                     break;
                 } catch (NumberFormatException e){
                     System.out.println("Harga harus berupa angka yang valid!");
+                } catch (NullPointerException f){
+                    System.out.println(f.getMessage());
                 }
             }
 
@@ -81,12 +101,13 @@ public class Main {
 
             }
 
-            Product inputProduct = new Product(sku, name, category, price,stock);
+            Product inputProduct;
             try {
+                inputProduct = new Product(sku, name, category, price,stock);
                 productService.addProduct(inputProduct);
                 System.out.println("Product " + inputProduct.getName() + " Berhasil ditambahkan!");
             } catch (IllegalArgumentException e){
-                System.out.println("Gagal menambah produk " + inputProduct.getName() + " || Reason: " + e.getMessage());
+                System.out.println("Gagal menambah produk " + name + " || Reason: " + e.getMessage());
             }
 
             System.out.println("Apakah ingin menambahkan produk lain? (Y/n)");

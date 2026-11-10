@@ -14,7 +14,7 @@ public class Product {
         this.category = category;
         this.price = price;
         this.stock = stock;
-        if(sku.isBlank() || name.isBlank() || category.isBlank() || price != null ){
+        if(sku.isBlank() || name.isBlank() || category.isBlank() || price == null ){
             throw new IllegalArgumentException();
         }
 
