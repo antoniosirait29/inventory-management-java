@@ -4,8 +4,6 @@ import com.inventory.model.Product;
 import com.inventory.service.ProductService;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -28,13 +26,33 @@ public class Main {
             System.out.print("Masukkan nama category: ");
             String category = scanner.nextLine();
 
-            System.out.print("Masukkan harga product: ");
-            String priceOnString = scanner.nextLine();
-            BigDecimal price = new BigDecimal(priceOnString);
+            BigDecimal price;
+            while (true){
+                System.out.print("Masukkan harga product: ");
+                String priceOnString = scanner.nextLine();
+                try {
+                    price = new BigDecimal(priceOnString);
+                    break;
+                } catch (NumberFormatException e){
+                    System.out.println("Input format salah");
+                }
+            }
 
-            System.out.print("Masukkan stock product: ");
-            String stockOnString = scanner.nextLine();
-            int stock = Integer.parseInt(stockOnString);
+            int stock;
+            while (true){
+                System.out.print("Masukkan stock product: ");
+                String stockOnString = scanner.nextLine();
+                try {
+                    stock = Integer.parseInt(stockOnString);
+                    break;
+                } catch (NumberFormatException e){
+                    System.out.println("Input format salah");
+                }
+
+            }
+
+
+
             Product inputProduct = new Product(sku, name, category, price,stock);
             try {
                 productService.addProduct(inputProduct);
