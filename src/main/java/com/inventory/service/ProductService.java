@@ -9,9 +9,9 @@ public class ProductService {
     public void addProduct(Product product){
 
         for (Product existingProduct : products){
-            String existingSKU = existingProduct.getSku();
+            String existingSku = existingProduct.getSku();
 
-            if(existingSKU.equals(product.getSku())){
+            if(existingSku.equals(product.getSku())){
                 throw new IllegalArgumentException("SKU already exist!");
             }
         }

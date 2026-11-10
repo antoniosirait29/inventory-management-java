@@ -13,12 +13,13 @@ public class Main {
 
         List<Product> newProduct = new ArrayList<>();
         ProductService productService = new ProductService();
+        Scanner scanner = new Scanner(System.in);
+
         while (true){
             System.out.println("Sistem berhasil dijalankan!");
 
             System.out.println("=== INPUT PRODUCT ===");
 
-            Scanner scanner = new Scanner(System.in);
             System.out.print("Masukkan nama product: ");
             String name = scanner.nextLine();
 
@@ -36,25 +37,21 @@ public class Main {
             String stockOnString = scanner.nextLine();
             int stock = Integer.parseInt(stockOnString);
             Product inputProduct = new Product(sku, name, category, price,stock);
-            newProduct.add(inputProduct);
-
-            for (Product addProduct : newProduct){
-                try {
-                    productService.addProduct(addProduct);
-                    System.out.println("Product " + inputProduct.getName() + " Berhasil ditambahkan!");
-                } catch (IllegalArgumentException e){
-                    System.out.println("Gagal menambah produk " + inputProduct.getName() + " || Reason: " + e.getMessage());
-                }
+            try {
+                productService.addProduct(inputProduct);
+                System.out.println("Product " + inputProduct.getName() + " Berhasil ditambahkan!");
+            } catch (IllegalArgumentException e){
+                System.out.println("Gagal menambah produk " + inputProduct.getName() + " || Reason: " + e.getMessage());
             }
 
             System.out.println("Apakah ingin menambahkan produk lain? (Y/n)");
             String confirmation = scanner.nextLine();
             if(confirmation.equalsIgnoreCase("n")){
-                for (Product product : productService.getAllProducts()) {
-                    System.out.println(product);
-                }
                 break;
             }
+        }
+        for (Product product : productService.getAllProducts()) {
+            System.out.println(product);
         }
 
     }
