@@ -17,14 +17,36 @@ public class Main {
 
             System.out.println("=== INPUT PRODUCT ===");
 
-            System.out.print("Masukkan nama product: ");
-            String name = scanner.nextLine();
+//            ini contoh untuk percobaan doang
+            String name = "";
+            while (true){
+                try {
+                    System.out.print("Masukkan nama product: ");
+                    name = scanner.nextLine();
+                    break;
+                } catch (IllegalArgumentException e ){
+                    System.out.println("Input invalid!");
+                    continue;
+                }
+            }
 
-            System.out.print("Masukkan ID SKU: ");
-            String sku = scanner.nextLine();
+            String sku = "";
+            try {
+                System.out.print("Masukkan ID SKU: ");
+                sku = scanner.nextLine();
+            } catch (IllegalArgumentException e ){
+                System.out.println("Input invalid!");
+                continue;
+            }
 
-            System.out.print("Masukkan nama category: ");
-            String category = scanner.nextLine();
+            String category = "";
+            try {
+                System.out.print("Masukkan nama category: ");
+                category = scanner.nextLine();
+            } catch (IllegalArgumentException e ){
+                System.out.println("Input invalid!");
+                continue;
+            }
 
             BigDecimal price;
             while (true){
