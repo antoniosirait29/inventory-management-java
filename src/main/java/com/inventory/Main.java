@@ -32,9 +32,13 @@ public class Main {
                 String priceOnString = scanner.nextLine();
                 try {
                     price = new BigDecimal(priceOnString);
+                    if (price.compareTo(BigDecimal.ZERO) < 0){
+                        System.out.println("Harga tidak boleh minus!");
+                        continue;
+                    }
                     break;
                 } catch (NumberFormatException e){
-                    System.out.println("Input format salah");
+                    System.out.println("Harga harus berupa angka yang valid!");
                 }
             }
 
@@ -44,14 +48,16 @@ public class Main {
                 String stockOnString = scanner.nextLine();
                 try {
                     stock = Integer.parseInt(stockOnString);
+                    if(stock < 0){
+                        System.out.println("Stock tidak boleh minus!");
+                        continue;
+                    }
                     break;
                 } catch (NumberFormatException e){
-                    System.out.println("Input format salah");
+                    System.out.println("Stok harus berupa bilangan bulat!");
                 }
 
             }
-
-
 
             Product inputProduct = new Product(sku, name, category, price,stock);
             try {
