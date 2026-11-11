@@ -10,7 +10,7 @@ public class Product {
 
     public Product(String sku, String name, String category, BigDecimal price, int stock) {
 
-        if(sku == null){
+        if(sku == null || name == null || category == null || price == null ){
             throw new IllegalArgumentException("Cannot blank!");
         } else {
             if(sku.isBlank() || name.isBlank() || category.isBlank() || price == null ){

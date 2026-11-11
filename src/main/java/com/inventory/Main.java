@@ -17,54 +17,39 @@ public class Main {
 
             System.out.println("=== INPUT PRODUCT ===");
 
-//          ini contoh untuk percobaan doang
             String name = "";
             while (true){
-                try {
-                    System.out.print("Masukkan nama product: ");
-                    name = scanner.nextLine();
-                    if (name.isBlank()){
-                        System.out.println("Nama tidak boleh kosong!");
-                        continue;
-                    }
-                    break;
-                } catch (IllegalArgumentException e ){
-                    System.out.println("Input invalid!");
+                System.out.print("Masukkan nama product: ");
+                name = scanner.nextLine();
+                if (name.isBlank()){
+                    System.out.println("Nama tidak boleh kosong!");
                     continue;
                 }
+                    break;
             }
 
             String sku = "";
             while (true){
-                try {
-                    System.out.print("Masukkan ID SKU: ");
-                    sku = scanner.nextLine();
-                    if(sku.isBlank()){
-                        System.out.println("SKU tidak boleh kosong!");
-                        continue;
-                    }
-                    break;
-                } catch (IllegalArgumentException e ){
-                    System.out.println("Input invalid!");
+                System.out.print("Masukkan ID SKU: ");
+                sku = scanner.nextLine();
+                if(sku.isBlank()){
+                    System.out.println("SKU tidak boleh kosong!");
                     continue;
                 }
+                break;
             }
 
             String category = "";
             while (true){
-                try {
-                    System.out.print("Masukkan nama category: ");
-                    category = scanner.nextLine();
-                    if (category.isBlank()){
-                        System.out.println("Category tidak boleh kosong!");
-                        continue;
-                    }
-                    break;
-                } catch (IllegalArgumentException e ){
-                    System.out.println("Input invalid!");
+                System.out.print("Masukkan nama category: ");
+                category = scanner.nextLine();
+                if (category.isBlank()){
+                    System.out.println("Category tidak boleh kosong!");
                     continue;
                 }
+                break;
             }
+
 
             BigDecimal price;
             while (true){
@@ -95,10 +80,7 @@ public class Main {
                     break;
                 } catch (NumberFormatException e){
                     System.out.println("Stok harus berupa bilangan bulat!");
-                } catch (NullPointerException f){
-                    System.out.println("Stock harus diisi!");
                 }
-
             }
 
             Product inputProduct;
