@@ -12,6 +12,9 @@ public class Main {
 
     public static void main(String[] args){
     Main app = new Main();
+    app.showMenu();
+    app.addProduct();
+    app.viewAllProducts();
 
 //        while (true){
 //            System.out.println("Sistem berhasil dijalankan!");
@@ -105,11 +108,75 @@ public class Main {
     }
 
     public void showMenu(){
-
+        System.out.println("== Sistem berhasil dijalankan! ==");
     }
 
     public void addProduct(){
 
+//      Input nama product
+        System.out.print("Masukkan nama product: ");
+        String name = scanner.nextLine();
+        if (name.isBlank()){
+            System.out.println("Nama tidak boleh kosong!");
+        }
+
+//        Input SKU
+        System.out.print("Masukkan ID SKU: ");
+        String sku = scanner.nextLine();
+        if(sku.isBlank()){
+            System.out.println("SKU tidak boleh kosong!");
+        }
+
+//        Input category
+        System.out.print("Masukkan nama category: ");
+        String category = scanner.nextLine();
+        if (category.isBlank()){
+            System.out.println("Category tidak boleh kosong!");
+        }
+
+//        Input Price
+        BigDecimal price = null;
+        System.out.print("Masukkan harga product: ");
+        String priceOnString = scanner.nextLine();
+        try {
+            price = new BigDecimal(priceOnString);
+            if (price.compareTo(BigDecimal.ZERO) <= 0){
+                System.out.println("Harga harus lebih besar dari 0!");
+            }
+        } catch (NumberFormatException e){
+            System.out.println("Harga harus berupa angka yang valid!");
+        }
+
+//        Input stock
+        int stock = 0;
+        System.out.print("Masukkan stock product: ");
+        String stockOnString = scanner.nextLine();
+        try {
+            stock = Integer.parseInt(stockOnString);
+            if(stock < 0){
+                System.out.println("Stock tidak boleh minus!");
+            }
+        } catch (NumberFormatException e){
+            System.out.println("Stok harus berupa bilangan bulat!");
+        }
+
+//        Add product
+        Product inputProduct;
+        try {
+            inputProduct = new Product(sku, name, category, price,stock);
+            productService.addProduct(inputProduct);
+            System.out.println("Product " + inputProduct.getName() + " Berhasil ditambahkan!");
+        } catch (IllegalArgumentException e){
+            System.out.println("Gagal menambah produk " + name + " || Reason: " + e.getMessage());
+        }
+
+
+
     }
 
+    public void viewAllProducts(){
+        for (Product product : productService.getAllProducts()){
+            System.out.println(product);
+        }
+    }
 }
