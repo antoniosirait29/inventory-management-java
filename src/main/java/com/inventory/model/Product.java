@@ -12,18 +12,18 @@ public class Product {
 
         if(sku == null || name == null || category == null || price == null ){
             throw new IllegalArgumentException("Cannot blank!");
-        } else {
-            if(sku.isBlank() || name.isBlank() || category.isBlank() || price == null ){
-                throw new IllegalArgumentException("Cannot blank!");
-            }
+        }
 
-            if(price.compareTo(BigDecimal.ZERO) <= 0){
-                throw new IllegalArgumentException();
-            }
+        if(sku.isBlank() || name.isBlank() || category.isBlank() ){
+            throw new IllegalArgumentException("Cannot blank!");
+        }
 
-            if(stock < 0){
-                throw new IllegalArgumentException();
-            }
+        if(price.compareTo(BigDecimal.ZERO) <= 0){
+            throw new IllegalArgumentException("Invalid Input!");
+        }
+
+        if(stock < 0){
+            throw new IllegalArgumentException("Invalid Input");
         }
 
 
