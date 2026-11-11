@@ -9,22 +9,29 @@ public class Product {
     private int stock;
 
     public Product(String sku, String name, String category, BigDecimal price, int stock) {
+
+        if(sku == null){
+            throw new IllegalArgumentException("Cannot blank!");
+        } else {
+            if(sku.isBlank() || name.isBlank() || category.isBlank() || price == null ){
+                throw new IllegalArgumentException("Cannot blank!");
+            }
+
+            if(price.compareTo(BigDecimal.ZERO) <= 0){
+                throw new IllegalArgumentException();
+            }
+
+            if(stock < 0){
+                throw new IllegalArgumentException();
+            }
+        }
+
+
         this.sku = sku;
         this.name = name;
         this.category = category;
         this.price = price;
         this.stock = stock;
-        if(sku.isBlank() || name.isBlank() || category.isBlank() || price == null ){
-            throw new IllegalArgumentException();
-        }
-
-        if(price.compareTo(BigDecimal.ZERO) <= 0){
-            throw new IllegalArgumentException();
-        }
-
-        if(stock < 0){
-            throw new IllegalArgumentException();
-        }
     }
     @Override
     public String toString() {

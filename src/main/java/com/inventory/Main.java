@@ -17,7 +17,7 @@ public class Main {
 
             System.out.println("=== INPUT PRODUCT ===");
 
-//            ini contoh untuk percobaan doang
+//          ini contoh untuk percobaan doang
             String name = "";
             while (true){
                 try {
@@ -79,8 +79,6 @@ public class Main {
                     break;
                 } catch (NumberFormatException e){
                     System.out.println("Harga harus berupa angka yang valid!");
-                } catch (NullPointerException f){
-                    System.out.println(f.getMessage());
                 }
             }
 
@@ -97,6 +95,8 @@ public class Main {
                     break;
                 } catch (NumberFormatException e){
                     System.out.println("Stok harus berupa bilangan bulat!");
+                } catch (NullPointerException f){
+                    System.out.println("Stock harus diisi!");
                 }
 
             }
