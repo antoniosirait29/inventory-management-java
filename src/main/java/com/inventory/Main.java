@@ -9,12 +9,15 @@ import java.util.Scanner;
 public class Main {
     private final ProductService productService = new ProductService();
     private final Scanner scanner = new Scanner(System.in);
-
+    private static Boolean end;
     public static void main(String[] args){
     Main app = new Main();
-    app.showMenu();
-    app.addProduct();
-    app.viewAllProducts();
+    while (end = true){
+        app.showMenu();
+
+    }
+//    app.addProduct();
+//    app.viewAllProducts();
 
 //        while (true){
 //            System.out.println("Sistem berhasil dijalankan!");
@@ -108,7 +111,32 @@ public class Main {
     }
 
     public void showMenu(){
-        System.out.println("== Sistem berhasil dijalankan! ==");
+        System.out.print(
+                "===================================== \n" +
+                "     INVENTORY MANAGEMENT SYSTEM     \n" +
+                "===================================== \n" +
+                        "1. Add Product \n" +
+                        "2. View all product \n" +
+                        "0. Exit \n" +
+                        "===================================== \n" +
+                        "Input menu: "
+        );
+
+        String inputMenuOnString;
+        inputMenuOnString = scanner.nextLine();
+        int inputMenu = Integer.parseInt(inputMenuOnString);
+        if(inputMenu < 0 || inputMenu > 2){
+            System.out.print("Masukkan menu yang sesuai! : ");
+        }
+        switch (inputMenu){
+            case 1:
+                addProduct();
+                break;
+                case 2:
+                    viewAllProducts();
+                    break; case 0: break;
+        }
+
     }
 
     public void addProduct(){
