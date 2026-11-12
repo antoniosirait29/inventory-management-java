@@ -113,52 +113,71 @@ public class Main {
 
     public void addProduct(){
 
-//      Input nama product
-        System.out.print("Masukkan nama product: ");
-        String name = scanner.nextLine();
-        if (name.isBlank()){
-            System.out.println("Nama tidak boleh kosong!");
-        }
-
-//        Input SKU
-        System.out.print("Masukkan ID SKU: ");
-        String sku = scanner.nextLine();
-        if(sku.isBlank()){
-            System.out.println("SKU tidak boleh kosong!");
-        }
-
-//        Input category
-        System.out.print("Masukkan nama category: ");
-        String category = scanner.nextLine();
-        if (category.isBlank()){
-            System.out.println("Category tidak boleh kosong!");
-        }
-
-//        Input Price
-        BigDecimal price = null;
-        System.out.print("Masukkan harga product: ");
-        String priceOnString = scanner.nextLine();
-        try {
-            price = new BigDecimal(priceOnString);
-            if (price.compareTo(BigDecimal.ZERO) <= 0){
-                System.out.println("Harga harus lebih besar dari 0!");
+        String name = "";
+            while (true){
+                System.out.print("Masukkan nama product: ");
+                name = scanner.nextLine();
+                if (name.isBlank()){
+                    System.out.println("Nama tidak boleh kosong!");
+                    continue;
+                }
+                    break;
             }
-        } catch (NumberFormatException e){
-            System.out.println("Harga harus berupa angka yang valid!");
-        }
 
-//        Input stock
-        int stock = 0;
-        System.out.print("Masukkan stock product: ");
-        String stockOnString = scanner.nextLine();
-        try {
-            stock = Integer.parseInt(stockOnString);
-            if(stock < 0){
-                System.out.println("Stock tidak boleh minus!");
+            String sku = "";
+            while (true){
+                System.out.print("Masukkan ID SKU: ");
+                sku = scanner.nextLine();
+                if(sku.isBlank()){
+                    System.out.println("SKU tidak boleh kosong!");
+                    continue;
+                }
+                break;
             }
-        } catch (NumberFormatException e){
-            System.out.println("Stok harus berupa bilangan bulat!");
-        }
+
+            String category = "";
+            while (true){
+                System.out.print("Masukkan nama category: ");
+                category = scanner.nextLine();
+                if (category.isBlank()){
+                    System.out.println("Category tidak boleh kosong!");
+                    continue;
+                }
+                break;
+            }
+
+
+            BigDecimal price;
+            while (true){
+                System.out.print("Masukkan harga product: ");
+                String priceOnString = scanner.nextLine();
+                try {
+                    price = new BigDecimal(priceOnString);
+                    if (price.compareTo(BigDecimal.ZERO) <= 0){
+                        System.out.println("Harga harus lebih besar dari 0!");
+                        continue;
+                    }
+                    break;
+                } catch (NumberFormatException e){
+                    System.out.println("Harga harus berupa angka yang valid!");
+                }
+            }
+
+            int stock;
+            while (true){
+                System.out.print("Masukkan stock product: ");
+                String stockOnString = scanner.nextLine();
+                try {
+                    stock = Integer.parseInt(stockOnString);
+                    if(stock < 0){
+                        System.out.println("Stock tidak boleh minus!");
+                        continue;
+                    }
+                    break;
+                } catch (NumberFormatException e){
+                    System.out.println("Stok harus berupa bilangan bulat!");
+                }
+            }
 
 //        Add product
         Product inputProduct;
