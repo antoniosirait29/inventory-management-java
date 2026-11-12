@@ -9,10 +9,10 @@ import java.util.Scanner;
 public class Main {
     private final ProductService productService = new ProductService();
     private final Scanner scanner = new Scanner(System.in);
-    private static Boolean end;
+    private boolean isRunning = true;
     public static void main(String[] args){
     Main app = new Main();
-    while (end = true){
+    while (app.isRunning){
         app.showMenu();
 
     }
@@ -132,9 +132,13 @@ public class Main {
             case 1:
                 addProduct();
                 break;
-                case 2:
-                    viewAllProducts();
-                    break; case 0: break;
+            case 2:
+                viewAllProducts();
+                break;
+            case 0:
+                isRunning = false;
+                System.out.println("Sistem dihentikan!");
+                break;
         }
 
     }
