@@ -124,21 +124,26 @@ public class Main {
 
         String inputMenuOnString;
         inputMenuOnString = scanner.nextLine();
-        int inputMenu = Integer.parseInt(inputMenuOnString);
-        if(inputMenu < 0 || inputMenu > 2){
-            System.out.print("Masukkan menu yang sesuai! : ");
-        }
-        switch (inputMenu){
-            case 1:
-                addProduct();
-                break;
-            case 2:
-                viewAllProducts();
-                break;
-            case 0:
-                isRunning = false;
-                System.out.println("Sistem dihentikan!");
-                break;
+        try {
+        int inputMenu;
+            inputMenu = Integer.parseInt(inputMenuOnString);
+            if(inputMenu < 0 || inputMenu > 2){
+                System.out.print("Masukkan menu yang sesuai! : ");
+            }
+            switch (inputMenu){
+                case 1:
+                    addProduct();
+                    break;
+                case 2:
+                    viewAllProducts();
+                    break;
+                case 0:
+                    isRunning = false;
+                    System.out.println("Sistem dihentikan!");
+                    break;
+            }
+        } catch (NumberFormatException f){
+            System.out.println("Input harus berupa angka!");
         }
 
     }
