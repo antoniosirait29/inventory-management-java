@@ -135,14 +135,15 @@ public class Main {
         } catch (IllegalArgumentException e){
             System.out.println("Gagal menambah produk " + name + " || Reason: " + e.getMessage());
         }
-
-
-
     }
 
     public void viewAllProducts(){
-        for (Product product : productService.getAllProducts()){
-            System.out.println(product);
+        if (productService.getAllProducts().isEmpty()){
+            System.out.println("Belum ada produk!");
+        } else {
+            for (Product product : productService.getAllProducts()){
+                System.out.println(product);
+            }
         }
     }
 }
