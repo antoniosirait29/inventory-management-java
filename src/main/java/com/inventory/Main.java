@@ -4,6 +4,7 @@ import com.inventory.model.Product;
 import com.inventory.service.ProductService;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -138,10 +139,11 @@ public class Main {
     }
 
     public void viewAllProducts(){
-        if (productService.getAllProducts().isEmpty()){
+        List<Product> products = productService.getAllProducts();
+        if (products.isEmpty()){
             System.out.println("Belum ada produk!");
         } else {
-            for (Product product : productService.getAllProducts()){
+            for (Product product : products){
                 System.out.println(product);
             }
         }
