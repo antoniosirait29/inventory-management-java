@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ProductServiceTest {
     private ProductService productService;
@@ -19,12 +20,24 @@ public class ProductServiceTest {
 
     @Test
     void shouldAddProductSuccessfully(){
+        Product product = new Product("KCPMNS", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
+
+        productService.addProduct(product);
+
+        assertEquals(1, productService.getAllProducts().size(), "Product should be successfully added!");
+    }
+
+    @Test
+    void shouldThrowExceptionAlreadyExist(){
         Product product1 = new Product("KCPMNS", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
 
         productService.addProduct(product1);
 
-        assertEquals(1, productService.getAllProducts().size());
+        Product product2 = new Product("KCPMNS", "Kecap Manis 100ml", "Makanan", new BigDecimal("7000.00"), 100);
 
+        assertThrows(IllegalArgumentException.class, ()->{
+            productService.addProduct(product2);
+        });
 
     }
 
