@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class ProductServiceTest {
     private ProductService productService;
 
@@ -16,14 +18,14 @@ public class ProductServiceTest {
     }
 
     @Test
-    void inputProduct(){
+    void shouldAddProductSuccessfully(){
         Product product1 = new Product("KCPMNS", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
-        productService.addProduct(product1);
-    }
 
-    @Test
-    void getProduct(){
-        productService.getAllProducts();
+        productService.addProduct(product1);
+
+        assertEquals(1, productService.getAllProducts().size());
+
+
     }
 
 }
