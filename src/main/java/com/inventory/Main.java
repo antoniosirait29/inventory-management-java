@@ -128,7 +128,8 @@ public class Main {
         int inputMenu;
             inputMenu = Integer.parseInt(inputMenuOnString);
             if(inputMenu < 0 || inputMenu > 2){
-                System.out.print("Masukkan menu yang sesuai! : ");
+                System.out.println("Masukkan menu yang sesuai!");
+                return;
             }
             switch (inputMenu){
                 case 1:
