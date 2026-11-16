@@ -7,7 +7,7 @@ public class ProductService {
     private final List<Product> products = new ArrayList<>();
 
     public void addProduct(Product product){
-        if(products.isEmpty()){
+        if(product == null){
             throw new IllegalArgumentException("Products cannot be null");
         }
         for (Product existingProduct : products){
