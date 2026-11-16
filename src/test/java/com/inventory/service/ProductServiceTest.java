@@ -8,8 +8,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductServiceTest {
     private ProductService productService;
@@ -45,7 +44,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    void getAllProducts(){
+    void shouldReturnAllProducts(){
         Product product1 = new Product("KCPMNS", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
 
         productService.addProduct(product1);
@@ -54,11 +53,14 @@ public class ProductServiceTest {
 
         productService.addProduct(product2);
 
-        List<Product> containerProduct = new ArrayList<>();
-        containerProduct = productService.getAllProducts();
+        List<Product> containerProduct = productService.getAllProducts();
 
-        int sizeList = containerProduct.size();
+        assertEquals(2, containerProduct.size(), "The list should contain 2 products");
+    }
 
-        assertEquals(2, sizeList, "The list should contain 2 products");
+    @Test
+
+    void shouldReturnEmptyListWhenNoProductsExist(){
+        assertTrue(productService.getAllProducts().isEmpty());
     }
 }
