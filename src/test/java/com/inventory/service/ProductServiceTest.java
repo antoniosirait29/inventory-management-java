@@ -65,7 +65,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    void shouldThrowExceptionProductsIsNull(){
+    void shouldThrowExceptionWhenProductsIsNull(){
         assertThrows(IllegalArgumentException.class, ()->{
             productService.addProduct(null);
         });

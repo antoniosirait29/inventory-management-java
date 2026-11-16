@@ -7,10 +7,11 @@ public class ProductService {
     private final List<Product> products = new ArrayList<>();
 
     public void addProduct(Product product){
-
+        if(products.isEmpty()){
+            throw new IllegalArgumentException("Products cannot be null");
+        }
         for (Product existingProduct : products){
             String existingSku = existingProduct.getSku();
-
             if(existingSku.equals(product.getSku())){
                 throw new IllegalArgumentException("SKU already exist!");
             }
