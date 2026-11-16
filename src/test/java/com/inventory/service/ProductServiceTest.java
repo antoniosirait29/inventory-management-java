@@ -63,4 +63,11 @@ public class ProductServiceTest {
     void shouldReturnEmptyListWhenNoProductsExist(){
         assertTrue(productService.getAllProducts().isEmpty());
     }
+
+    @Test
+    void shouldThrowExceptionProductsIsNull(){
+        assertThrows(IllegalArgumentException.class, ()->{
+            productService.addProduct(null);
+        });
+    }
 }
