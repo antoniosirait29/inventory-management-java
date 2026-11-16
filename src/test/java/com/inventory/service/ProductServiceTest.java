@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -42,4 +44,21 @@ public class ProductServiceTest {
 
     }
 
+    @Test
+    void getAllProducts(){
+        Product product1 = new Product("KCPMNS", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
+
+        productService.addProduct(product1);
+
+        Product product2 = new Product("KCPASN", "Kecap Asin 60ml", "Makanan", new BigDecimal("7000.00"), 100);
+
+        productService.addProduct(product2);
+
+        List<Product> containerProduct = new ArrayList<>();
+        containerProduct = productService.getAllProducts();
+
+        int sizeList = containerProduct.size();
+
+        assertEquals(2, sizeList, "The list should contain 2 products");
+    }
 }
