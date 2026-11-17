@@ -87,9 +87,9 @@ public class ProductServiceTest {
 
     @Test
     void shouldThrowExceptionWhenSkuContainsOnlyWhiteSpace(){
-        Product product1 = new Product("   ", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
 
         assertThrows(IllegalArgumentException.class, ()->{
+            Product product1 = new Product("   ", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
             productService.addProduct(product1);
         });
     }
