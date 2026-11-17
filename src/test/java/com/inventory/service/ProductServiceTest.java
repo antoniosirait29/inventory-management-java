@@ -77,7 +77,7 @@ public class ProductServiceTest {
 
         productService.addProduct(product1);
 
-        Product product2 = new Product("kcpmns", "Kecap Manis 100ml", "Makanan", new BigDecimal("7000.00"), 100);
+        Product product2 = new Product(" kcpmns", "Kecap Manis 100ml", "Makanan", new BigDecimal("7000.00"), 100);
 
 
         assertThrows(IllegalArgumentException.class, ()->{
