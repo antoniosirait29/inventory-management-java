@@ -7,6 +7,10 @@ public class ProductService {
     private final List<Product> products = new ArrayList<>();
 
     public void addProduct(Product product){
+        if(product == null){
+            throw new IllegalArgumentException("Products cannot be null");
+        }
+
         Product normalizedProduct = new Product(
                 product.getSku().trim(),
                 product.getName(),
@@ -15,12 +19,9 @@ public class ProductService {
                 product.getStock()
         );
 
-        if(product == null){
-            throw new IllegalArgumentException("Products cannot be null");
-        }
         for (Product existingProduct : products){
             String existingSku = existingProduct.getSku();
-            if(existingSku.equalsIgnoreCase(product.getSku())){
+            if(existingSku.equalsIgnoreCase(normalizedProduct.getSku())){
                 throw new IllegalArgumentException("SKU already exist!");
             }
         }
