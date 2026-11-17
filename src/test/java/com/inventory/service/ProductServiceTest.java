@@ -70,4 +70,18 @@ public class ProductServiceTest {
             productService.addProduct(null);
         });
     }
+
+    @Test
+    void shouldThrowExceptionWhenSkuIsCaseInsensitive(){
+        Product product1 = new Product("KCPMNS", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
+
+        productService.addProduct(product1);
+
+        Product product2 = new Product("kcpmns", "Kecap Manis 100ml", "Makanan", new BigDecimal("7000.00"), 100);
+
+
+        assertThrows(IllegalArgumentException.class, ()->{
+            productService.addProduct(product2);
+        });
+    }
 }
