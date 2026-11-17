@@ -72,7 +72,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    void shouldThrowExceptionWhenSkuIsCaseInsensitive(){
+    void shouldThrowExceptionWhenSkuIsCaseSensitive(){
         Product product1 = new Product("KCPMNS", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
 
         productService.addProduct(product1);
@@ -82,6 +82,15 @@ public class ProductServiceTest {
 
         assertThrows(IllegalArgumentException.class, ()->{
             productService.addProduct(product2);
+        });
+    }
+
+    @Test
+    void shouldThrowExceptionWhenSkuContainsOnlyWhiteSpace(){
+        Product product1 = new Product("   ", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
+
+        assertThrows(IllegalArgumentException.class, ()->{
+            productService.addProduct(product1);
         });
     }
 }
