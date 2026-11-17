@@ -12,7 +12,7 @@ public class ProductService {
         }
         for (Product existingProduct : products){
             String existingSku = existingProduct.getSku();
-            if(existingSku.equals(product.getSku())){
+            if(existingSku.equalsIgnoreCase(product.getSku())){
                 throw new IllegalArgumentException("SKU already exist!");
             }
         }
