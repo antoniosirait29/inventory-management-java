@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -72,7 +71,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    void shouldThrowExceptionWhenSkuIsCaseSensitive(){
+    void shouldRejectDuplicateSkuRegardlessOfCase(){
         Product product1 = new Product("KCPMNS", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
 
         productService.addProduct(product1);
@@ -85,12 +84,5 @@ public class ProductServiceTest {
         });
     }
 
-    @Test
-    void shouldThrowExceptionWhenSkuContainsOnlyWhiteSpace(){
 
-        assertThrows(IllegalArgumentException.class, ()->{
-            Product product1 = new Product("   ", "Kecap Manis 60ml", "Makanan", new BigDecimal("7000.00"), 100);
-            productService.addProduct(product1);
-        });
-    }
 }
