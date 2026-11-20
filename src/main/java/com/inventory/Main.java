@@ -5,6 +5,7 @@ import com.inventory.service.ProductService;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {
@@ -27,6 +28,7 @@ public class Main {
                 "===================================== \n" +
                         "1. Add Product \n" +
                         "2. View all product \n" +
+                        "3. Search product by SKU \n" +
                         "0. Exit \n" +
                         "===================================== \n" +
                         "Input menu: "
@@ -37,7 +39,7 @@ public class Main {
         try {
         int inputMenu;
             inputMenu = Integer.parseInt(inputMenuOnString);
-            if(inputMenu < 0 || inputMenu > 2){
+            if(inputMenu < 0 || inputMenu > 3){
                 System.out.println("Masukkan menu yang sesuai!");
                 return;
             }
@@ -47,6 +49,9 @@ public class Main {
                     break;
                 case 2:
                     viewAllProducts();
+                    break;
+                case 3:
+                    searchProduct();
                     break;
                 case 0:
                     isRunning = false;
@@ -146,6 +151,17 @@ public class Main {
             for (Product product : products){
                 System.out.println(product);
             }
+        }
+    }
+
+    public void searchProduct(){
+        System.out.print("SKU yang dicari: ");
+        String searchSku = scanner.nextLine();
+        Optional<Product> searchResult = productService.findProductBySku(searchSku);
+        if(searchResult.isEmpty()){
+            System.out.println("Product yang dicari tidak ada");
+        } else {
+            System.out.println(searchResult);
         }
     }
 }

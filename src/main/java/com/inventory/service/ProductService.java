@@ -2,6 +2,7 @@ package com.inventory.service;
 import com.inventory.model.Product;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ProductService {
     private final List<Product> products = new ArrayList<>();
@@ -31,6 +32,15 @@ public class ProductService {
     public List<Product> getAllProducts(){
 
         return List.copyOf(products);
+    }
+
+    public Optional<Product> findProductBySku(String sku){
+        for(Product listProduct : products){
+            if(listProduct.getSku().equalsIgnoreCase(sku)){
+                return Optional.of(listProduct);
+            }
+        }
+        return Optional.empty();
     }
 
 }
