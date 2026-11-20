@@ -1,4 +1,6 @@
 package com.inventory.model;
+import com.inventory.service.ProductService;
+
 import java.math.BigDecimal;
 
 public class Product {
@@ -67,5 +69,19 @@ public class Product {
     public int getStock() {
 
         return stock;
+    }
+
+    public void updateDetails(String name, String category, BigDecimal price){
+        if(name == null || category == null || price == null ){
+            throw new IllegalArgumentException("Cannot blank!");
+        }
+
+        if(name.isBlank() || category.isBlank() ){
+            throw new IllegalArgumentException("Cannot blank!");
+        }
+
+        if(price.compareTo(BigDecimal.ZERO) <= 0){
+            throw new IllegalArgumentException("Invalid Input!");
+        }
     }
 }
