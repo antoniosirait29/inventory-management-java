@@ -161,7 +161,8 @@ public class Main {
         if(searchResult.isEmpty()){
             System.out.println("Product yang dicari tidak ada");
         } else {
-            System.out.println(searchResult);
+            System.out.println(searchResult.get());
+
         }
     }
 }
